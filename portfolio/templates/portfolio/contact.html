@@ -1,0 +1,404 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Contact - David | Full Stack Developer</title>
+  <meta name="description" content="Get in touch with David — Full-Stack Django Developer.">
+  <meta name="keywords" content="Django, Django REST Framework, backend developer, contact, hire developer">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FolioOne
+  * Template URL: https://bootstrapmade.com/folioone-bootstrap-portfolio-website-template/
+  * Updated: Aug 23 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <!-- Contact page fallback styling (in case main.css doesn't fully cover these classes) -->
+  <style>
+    #contact.contact.section {
+      background: #0b0f19;
+      padding: 80px 0;
+    }
+
+    .contact .info-box {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 36px 32px;
+      height: 100%;
+    }
+
+    .contact .info-box h3 {
+      color: #f5f6fa;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .contact .info-box > p {
+      color: #a9b1c3;
+      font-size: 14.5px;
+      margin-bottom: 30px;
+    }
+
+    .contact .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .contact .info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact .info-item .icon-box {
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid #2f9bf0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2f9bf0;
+      font-size: 18px;
+    }
+
+    .contact .info-item .content h4 {
+      color: #f5f6fa;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .contact .info-item .content p {
+      color: #a9b1c3;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .contact .contact-form {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      padding: 36px 32px;
+      height: 100%;
+    }
+
+    .contact .contact-form h3 {
+      color: #f5f6fa;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .contact .contact-form > p {
+      color: #a9b1c3;
+      font-size: 14.5px;
+      margin-bottom: 26px;
+    }
+
+    .contact .contact-form .form-control {
+      background: #0b0f19;
+      border: 1px solid #1f2937;
+      color: #f5f6fa;
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 14.5px;
+    }
+
+    .contact .contact-form .form-control::placeholder {
+      color: #6b7280;
+    }
+
+    .contact .contact-form .form-control:focus {
+      background: #0b0f19;
+      border-color: #2f9bf0;
+      color: #f5f6fa;
+      box-shadow: 0 0 0 2px rgba(47, 155, 240, 0.15);
+    }
+
+    .contact .contact-form textarea.form-control {
+      resize: vertical;
+    }
+
+    .contact .contact-form .btn {
+      background: #e0a83e;
+      color: #0b0f19;
+      border: none;
+      padding: 12px 34px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: background .2s;
+    }
+
+    .contact .contact-form .btn:hover {
+      background: #f0c169;
+    }
+
+    .contact .contact-form .loading,
+    .contact .contact-form .error-message,
+    .contact .contact-form .sent-message {
+      display: none;
+      margin-bottom: 16px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .contact .contact-form .error-message {
+      background: rgba(220, 53, 69, 0.12);
+      color: #f16b78;
+      border: 1px solid rgba(220, 53, 69, 0.3);
+    }
+
+    .contact .contact-form .sent-message {
+      background: rgba(40, 167, 69, 0.12);
+      color: #3fce6b;
+      border: 1px solid rgba(40, 167, 69, 0.3);
+    }
+  </style>
+</head>
+
+<body class="contact-page">
+
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'resume' %}">Resume</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'contact' %}" class="active">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/david-thomas-205002405" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Have a project in mind or want to work together? Send a message and I'll get back to you.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-4 g-lg-5">
+          <div class="col-lg-5">
+            <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+              <h3>Contact Info</h3>
+              <p>Reach out directly, or use the form to send a message — I typically respond within a day or two.</p>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon-box">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <div class="content">
+                  <h4>My Location</h4>
+                  <p>Lakowe, Lagos State, Nigeria</p>
+                </div>
+              </div>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon-box">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <div class="content">
+                  <h4>Phone Number</h4>
+                  <p>+234 913 227 3889</p>
+                </div>
+              </div>
+
+              <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon-box">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <div class="content">
+                  <h4>Email Address</h4>
+                  <p>davidthomasinimforn001@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+              <h3>Get In Touch</h3>
+              <p>Fill out the form below and I'll get back to you as soon as I can.</p>
+
+              <form id="contactForm" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                {% csrf_token %}
+                <div class="row gy-4">
+
+                  <div class="col-md-6">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                  </div>
+
+                  <div class="col-md-6">
+                    <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+                  </div>
+
+                  <div class="col-12">
+                    <input type="text" class="form-control" name="subject" placeholder="Subject">
+                  </div>
+
+                  <div class="col-12">
+                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+                  </div>
+
+                  <div class="col-12 text-center">
+                    <div class="loading">Sending...</div>
+                    <div class="error-message"></div>
+                    <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                    <button type="submit" id="contactSubmitBtn" class="btn">Send Message</button>
+                  </div>
+
+                </div>
+              </form>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">David</strong> <span>All Rights Reserved<br></span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/david-thomas-205002405"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="credits">
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/typed.js/typed.umd.js' %}"></script>
+  <script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+  <!-- Contact form submission (matches the Django JSON view) -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const loadingEl = form.querySelector('.loading');
+      const errorEl = form.querySelector('.error-message');
+      const sentEl = form.querySelector('.sent-message');
+      const btn = document.getElementById('contactSubmitBtn');
+      const csrftoken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+
+      loadingEl.style.display = 'block';
+      errorEl.style.display = 'none';
+      sentEl.style.display = 'none';
+      btn.disabled = true;
+
+      const payload = {
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value
+      };
+
+      fetch("{% url 'contact' %}", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify(payload)
+      })
+        .then(res => res.json().then(data => ({ status: res.status, data })))
+        .then(({ status, data }) => {
+          loadingEl.style.display = 'none';
+          btn.disabled = false;
+          if (status === 200) {
+            sentEl.style.display = 'block';
+            form.reset();
+          } else {
+            errorEl.textContent = data.error || 'Something went wrong. Please try again.';
+            errorEl.style.display = 'block';
+          }
+        })
+        .catch(() => {
+          loadingEl.style.display = 'none';
+          btn.disabled = false;
+          errorEl.textContent = 'Network error. Please try again.';
+          errorEl.style.display = 'block';
+        });
+    });
+  </script>
+
+</body>
+
+</html>

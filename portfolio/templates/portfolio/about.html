@@ -1,0 +1,534 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>About - David | Backend Developer</title>
+  <meta name="description" content="David — Backend Developer specializing in Django & Django REST Framework, API design, and algorithm development.">
+  <meta name="keywords" content="Django, Django REST Framework, backend developer, API design, Python">
+
+  <!-- Favicons -->
+  <link href="{% static 'img/favicon.png' %}" rel="icon">
+  <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: FolioOne
+  * Template URL: https://bootstrapmade.com/folioone-bootstrap-portfolio-website-template/
+  * Updated: Aug 23 2025 with Bootstrap v5.3.7
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <!-- Certificate Showcase + Testimonial Placeholder Styles (added) -->
+  <style>
+    .certificate-section {
+      padding-top: 20px;
+    }
+
+    .certificate-frame-wrap {
+      position: relative;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 14px;
+      background: linear-gradient(145deg, #d9b26a, #b8892f 45%, #f4dfa8 55%, #a97e2c);
+      border-radius: 10px;
+      box-shadow: 0 25px 60px -20px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(184, 137, 47, 0.4);
+    }
+
+    .certificate-frame-inner {
+      background: #0e0e12;
+      border-radius: 6px;
+      padding: 10px;
+      border: 1px solid rgba(212, 175, 111, 0.5);
+    }
+
+    .certificate-frame-inner img,
+    .certificate-frame-inner .certificate-placeholder {
+      width: 100%;
+      display: block;
+      border-radius: 3px;
+    }
+
+    .certificate-placeholder {
+      aspect-ratio: 4 / 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background:
+        repeating-linear-gradient(45deg, rgba(212, 175, 111, 0.06) 0 2px, transparent 2px 14px),
+        #131318;
+      border: 1.5px dashed rgba(212, 175, 111, 0.55);
+      color: #d9b26a;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .certificate-placeholder i {
+      font-size: 2.4rem;
+      color: #d9b26a;
+    }
+
+    .certificate-placeholder span.label {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+      color: #f4dfa8;
+    }
+
+    .certificate-placeholder small {
+      color: rgba(244, 223, 168, 0.65);
+      font-size: 0.78rem;
+    }
+
+    .certificate-caption {
+      text-align: center;
+      margin-top: 22px;
+    }
+
+    .certificate-caption .seal {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b8892f;
+    }
+
+    .certificate-caption .seal::before,
+    .certificate-caption .seal::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: #b8892f;
+      display: inline-block;
+    }
+
+    .certificate-caption h4 {
+      margin-top: 10px;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+    }
+
+    .certificate-caption p {
+      max-width: 480px;
+      margin: 6px auto 0;
+      opacity: 0.85;
+    }
+
+    /* Testimonial placeholder card, styled to match the certificate's gold/luxury language */
+    .testimonial-placeholder-card {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 40px 30px;
+      text-align: center;
+      background: #0e0e12;
+      border: 1.5px dashed rgba(212, 175, 111, 0.55);
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px rgba(184, 137, 47, 0.25);
+    }
+
+    .testimonial-placeholder-card i {
+      font-size: 2rem;
+      color: #d9b26a;
+    }
+
+    .testimonial-placeholder-card p.label {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.1rem;
+      color: #f4dfa8;
+      margin: 12px 0 4px;
+    }
+
+    .testimonial-placeholder-card small {
+      color: rgba(244, 223, 168, 0.6);
+    }
+  </style>
+</head>
+
+<body class="about-page">
+
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}" class="active">About</a></li>
+          <li><a href="{% url 'resume' %}">Resume</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav> 
+
+      <div class="header-social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>Full-Stack Python Web Developer building secure, scalable web applications from frontend to backend. I create modern, high-performance systems, robust APIs, and intuitive user experiences that are designed to perform reliably in real-world environments.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- Intro + Photo -->
+        <div class="row align-items-center justify-content-between gy-5 mb-5">
+          <div class="col-lg-7" data-aos="fade-right" data-aos-delay="150">
+            <div class="intro-content">
+              <span class="eyebrow">Hello there</span>
+              <h2 class="headline">Hi, I'm David — a Full-Stack Python Web Developer passionate about building powerful digital solutions.</h2>
+              <p class="lead">
+                I design and develop high-performance web applications using Python, Django, Django REST Framework, JavaScript, HTML, CSS and Bootstrap. From backend architecture and REST APIs to responsive frontend interfaces, I build secure, scalable and user-focused applications tailored to the needs of businesses, organisations and startups.
+
+                My work includes custom web application development, management systems, e-commerce platforms, payment integration, authentication systems, database architecture, API development, business automation, dashboard development and cloud-ready web solutions. I am committed to delivering clean code, modern design, reliable functionality and long-term maintainability, ensuring every application performs efficiently in real-world environments.
+              </p>
+              
+              <div class="cta-group">
+                <a href="#certificate" class="btn-ghost">
+                  View My Certificate <i class="bi bi-arrow-up-right"></i>
+                </a>
+                <a href="#portfolio" class="link-underline">
+                  See My Work <i class="bi bi-arrow-up-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="250">
+            <figure class="profile-figure text-center text-lg-end">
+              <img src="{% static 'img/profile.png' %}" alt="Portrait of David" class="img-fluid profile-photo">
+            </figure>
+          </div>
+        </div>
+        <!-- End Intro + Photo -->
+
+        <!-- Skills Grid -->
+        <div class="mb-5">
+          <div class="row g-4">
+            <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="120">
+              <div class="skill-item">
+                <i class="bi bi-hdd-network"></i>
+                <h3>Django &amp; DRF</h3>
+                <p>Building robust backend systems and REST APIs.</p>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="180">
+              <div class="skill-item">
+                <i class="bi bi-diagram-3"></i>
+                <h3>API Design</h3>
+                <p>Clean, predictable APIs built around the consumer.</p>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+              <div class="skill-item">
+                <i class="bi bi-cpu"></i>
+                <h3>Algorithms</h3>
+                <p>Feed logic, business rules, and problem-solving at the core.</p>
+              </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+              <div class="skill-item">
+                <i class="bi bi-layers"></i>
+                <h3>Full-Stack Django</h3>
+                <p>End-to-end implementation, from models to templates.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Skills Grid -->
+
+        <!-- Certificate Showcase -->
+        <div id="certificate" class="certificate-section mb-5" data-aos="fade-up" data-aos-delay="100">
+          <div class="certificate-frame-wrap" data-aos="zoom-in" data-aos-delay="150">
+            <div class="certificate-frame-inner">
+              <!--
+                Replace the block below with your certificate image once ready:
+                <img src="{% static 'img/certificate/my-certificate.webp' %}" alt="David's Certificate">
+              -->
+              <div class="certificate-placeholder">
+                <i class="bi bi-patch-check"></i>
+                <span class="label">Certificate goes here</span>
+                <small>Recommended: landscape image, at least 1200px wide</small>
+              </div>
+            </div>
+          </div>
+          <div class="certificate-caption">
+            <span class="seal">Certified</span>
+            <h4>Professional Certification</h4>
+            <p>Add the certificate title, issuing body, and date here once you drop in the image.</p>
+          </div>
+        </div>
+        <!-- End Certificate Showcase -->
+
+        <!-- Quote -->
+        <blockquote class="personal-quote text-center mb-5" data-aos="fade-down" data-aos-delay="200">
+          <p>"Good backend work is invisible when it's right — it just holds."</p>
+        </blockquote>
+        <!-- End Quote -->
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Skills</h2>
+        <p>Where I spend most of my time — update the percentages below to whatever feels honest to you.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-4 skills-animation">
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-box">
+              <h3>Django</h3>
+              <p>Models, views, admin, and full-stack app structure.</p>
+              <span class="text-end d-block">90%</span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-box">
+              <h3>Django REST Framework</h3>
+              <p>Serializers, viewsets, permissions, and API architecture.</p>
+              <span class="text-end d-block">90%</span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-box">
+              <h3>Python</h3>
+              <p>The language underneath everything I build.</p>
+              <span class="text-end d-block">85%</span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+            <div class="skill-box">
+              <h3>Algorithm Design</h3>
+              <p>Feed logic, business rules, and edge-case handling.</p>
+              <span class="text-end d-block">80%</span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="500">
+            <div class="skill-box">
+              <h3>Frontend</h3>
+              <p>Turning backend logic into usable, connected screens.</p>
+              <span class="text-end d-block">75%</span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="600">
+            <div class="skill-box">
+              <h3>HTML</h3>
+              <p>Semantic, well-structured markup as the foundation.</p>
+              <span class="text-end d-block">85%</span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="700">
+            <div class="skill-box">
+              <h3>Bootstrap</h3>
+              <p>Fast, responsive layouts using a component-driven grid.</p>
+              <span class="text-end d-block">80%</span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="800">
+            <div class="skill-box">
+              <h3>Tailwind CSS</h3>
+              <p>Utility-first styling for tighter design control.</p>
+              <span class="text-end d-block">70%</span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="900">
+            <div class="skill-box">
+              <h3>JavaScript</h3>
+              <p>Interactivity and dynamic behavior on the client side.</p>
+              <span class="text-end d-block">70%</span>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Skills Section -->
+
+    <!-- Stats Section -->
+    <!-- <section id="stats" class="stats section dark-background"> -->
+
+      <!-- <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center">
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="avatars d-flex align-items-center">
+              <img src="{% static 'img/person/person-m-2.webp' %}" alt="Avatar 1" class="rounded-circle" loading="lazy">
+              <img src="{% static 'img/person/person-m-3.webp' %}" alt="Avatar 2" class="rounded-circle" loading="lazy">
+              <img src="{% static 'img/person/person-f-5.webp' %}" alt="Avatar 3" class="rounded-circle" loading="lazy">
+              <img src="{% static 'img/person/person-m-5.webp' %}" alt="Avatar 4" class="rounded-circle" loading="lazy">
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="row counters">
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                <h2><span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>+</h2>
+                <p>API Endpoints Built</p>
+              </div>
+
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                <h2><span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>+</h2>
+                <p>Django Models Shipped</p>
+              </div>
+
+              <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                <h2><span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>+</h2>
+                <p>Projects Delivered</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+    <!-- </section>/Stats Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Testimonials</h2>
+        <p>Reserved for real words from people you've worked with — nothing here is invented.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="testimonial-placeholder-card" data-aos="zoom-in" data-aos-delay="150">
+          <i class="bi bi-chat-quote"></i>
+          <p class="label">Testimonials go here</p>
+          <small>Add a quote, name, and role from a client, teammate, or manager once you have one to share.</small>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">David</strong> <span>All Rights Reserved<br></span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'vendor/typed.js/typed.umd.js' %}"></script>
+  <script src="{% static 'vendor/waypoints/noframework.waypoints.js' %}"></script>
+  <script src="{% static 'vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

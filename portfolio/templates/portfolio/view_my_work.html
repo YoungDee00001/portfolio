@@ -1,0 +1,383 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>My Work - David Thomas</title>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+  <style>
+    :root {
+      --work-accent: var(--accent-color, #4154f1);
+      --work-title: #1b1f2a;
+      --work-text: #4a5060;
+      --work-muted: #7a8090;
+    }
+
+    .portfolio-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(20, 30, 60, 0.09);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(20, 30, 60, 0.16);
+    }
+
+    .portfolio-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .portfolio-image img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .portfolio-card:hover .portfolio-image img {
+      transform: scale(1.07);
+    }
+
+    .portfolio-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--work-accent);
+      color: #fff;
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .portfolio-info {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .portfolio-info h4 {
+      color: var(--work-title);
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+    .portfolio-info .subtitle {
+      color: var(--work-muted);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+    }
+
+    .portfolio-label {
+      color: var(--work-accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 6px 0 6px;
+    }
+    .portfolio-info .desc {
+      color: var(--work-text);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .portfolio-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      color: var(--work-text);
+      font-size: 0.92rem;
+    }
+    .portfolio-features li {
+      padding: 4px 0 4px 24px;
+      position: relative;
+      line-height: 1.5;
+    }
+    .portfolio-features li::before {
+      content: "\F26A";
+      font-family: "bootstrap-icons";
+      position: absolute;
+      left: 0;
+      color: var(--work-accent);
+    }
+
+    .portfolio-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid #eceef3;
+    }
+    .portfolio-tags span {
+      background: #eef0fb;
+      color: var(--work-accent);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    /* ---------- "More projects" note ---------- */
+    .more-projects {
+      margin-top: 50px;
+      padding: 40px 30px;
+      text-align: center;
+      background: #fff;
+      border: 2px dashed var(--work-accent);
+      border-radius: 14px;
+    }
+    .more-projects .more-icon {
+      font-size: 2.4rem;
+      color: var(--work-accent);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .more-projects h3 {
+      color: var(--work-title);
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .more-projects p {
+      color: var(--work-text);
+      max-width: 640px;
+      margin: 0 auto 22px;
+      line-height: 1.7;
+    }
+    .more-projects .more-btn {
+      display: inline-block;
+      background: var(--work-accent);
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .more-projects .more-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(20, 30, 60, 0.2);
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center light-background sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'resume' %}">Resume</a></li>
+          <li><a href="{% url 'services' %}">Services</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <section id="portfolio" class="portfolio section">
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2>My Work</h2>
+        <p>A selection of projects I've designed and built, and there's more where these came from</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+
+          <!-- Card 1: E-commerce Website -->
+          <div class="col-lg-4 col-md-6">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="{% static 'img/mywork 1.jpeg' %}" alt="E-commerce Website">
+                <span class="portfolio-badge">E-commerce</span>
+              </div>
+              <div class="portfolio-info">
+                <h4>E-commerce Website</h4>
+                <p class="subtitle">Client project · Online store</p>
+
+                <p class="portfolio-label">Overview</p>
+                <p class="desc">A complete online store built for a client who wanted to sell products to customers around the clock. Shoppers can browse the catalogue, add items to their cart and pay securely, without ever leaving the site.</p>
+
+                <p class="portfolio-label">What I built</p>
+                <p class="desc">I designed the database, the storefront and the admin area. The owner can add products, update prices and stock, and track every order from a simple dashboard, with no technical help needed.</p>
+
+                <p class="portfolio-label">Key features</p>
+                <ul class="portfolio-features">
+                  <li>Product catalogue with categories and search</li>
+                  <li>Shopping cart and smooth checkout</li>
+                  <li>Secure online payments</li>
+                  <li>Order tracking and stock management</li>
+                  <li>Fully responsive on phones, tablets and desktops</li>
+                </ul>
+
+                <div class="portfolio-tags">
+                  <span>Django</span><span>Bootstrap</span><span>Paystack</span><span>PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: School Management System -->
+          <div class="col-lg-4 col-md-6">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="{% static 'img/mywork 2.jpeg' %}" alt="School Management System">
+                <span class="portfolio-badge">Management System</span>
+              </div>
+              <div class="portfolio-info">
+                <h4>School Management System</h4>
+                <p class="subtitle">Client project · Web application</p>
+
+                <p class="portfolio-label">Overview</p>
+                <p class="desc">A complete platform that helps a school run its daily operations from one place. It replaces paper files and scattered spreadsheets with organised, searchable digital records.</p>
+
+                <p class="portfolio-label">What I built</p>
+                <p class="desc">I built separate dashboards for administrators, teachers and students, so each person sees only what they need. Staff save hours on routine paperwork, and records stay accurate and easy to find.</p>
+
+                <p class="portfolio-label">Key features</p>
+                <ul class="portfolio-features">
+                  <li>Student and staff records management</li>
+                  <li>Class, subject and timetable setup</li>
+                  <li>Attendance and result recording</li>
+                  <li>Role-based access for admin, teachers and students</li>
+                  <li>Printable reports</li>
+                </ul>
+
+                <div class="portfolio-tags">
+                  <span>Django</span><span>Bootstrap</span><span>PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Transport Management System -->
+          <div class="col-lg-4 col-md-6">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="{% static 'img/mywork 3.jpeg' %}" alt="Transport Management System">
+                <span class="portfolio-badge">Management System</span>
+              </div>
+              <div class="portfolio-info">
+                <h4>Transport Management System</h4>
+                <p class="subtitle">Client project · Web application</p>
+
+                <p class="portfolio-label">Overview</p>
+                <p class="desc">A system that gives a transport business a clear view of its vehicles, drivers and trips. It replaces manual logbooks with one reliable, always up-to-date record of daily operations.</p>
+
+                <p class="portfolio-label">What I built</p>
+                <p class="desc">I built the tools to register vehicles, assign drivers, schedule trips and record bookings. Management can see what is on the road and what is available at a glance, and plan the day with confidence.</p>
+
+                <p class="portfolio-label">Key features</p>
+                <ul class="portfolio-features">
+                  <li>Vehicle and driver registration</li>
+                  <li>Trip scheduling and driver assignment</li>
+                  <li>Booking and passenger records</li>
+                  <li>Admin overview of fleet activity</li>
+                  <li>Searchable history of past trips</li>
+                </ul>
+
+                <div class="portfolio-tags">
+                  <span>Django</span><span>Bootstrap</span><span>PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Hotel Management System -->
+          <div class="col-lg-4 col-md-6">
+            <div class="portfolio-card">
+              <div class="portfolio-image">
+                <img src="{% static 'img/mywork 4.jpeg' %}" alt="Hotel Management System">
+                <span class="portfolio-badge">Management System</span>
+              </div>
+              <div class="portfolio-info">
+                <h4>Hotel Management System</h4>
+                <p class="subtitle">Client project · Booking platform</p>
+
+                <p class="portfolio-label">Overview</p>
+                <p class="desc">A luxury hotel website that lets guests search for rooms, see live availability and book online. The design is dark and elegant with gold accents, matching the feel of a five-star stay.</p>
+
+                <p class="portfolio-label">What I built</p>
+                <p class="desc">I built the public website and the back office behind it. Staff can manage rooms, upload homepage slider images, run special offers and follow every reservation, while guests pay online with Paystack or Flutterwave.</p>
+
+                <p class="portfolio-label">Key features</p>
+                <ul class="portfolio-features">
+                  <li>Room search by dates, guests and room type</li>
+                  <li>Live availability and instant booking</li>
+                  <li>Online payments with Paystack and Flutterwave</li>
+                  <li>Admin-managed rooms, slider images and offers</li>
+                  <li>Guest accounts and a management dashboard</li>
+                </ul>
+
+                <div class="portfolio-tags">
+                  <span>Django</span><span>Bootstrap 5</span><span>Paystack</span><span>Flutterwave</span><span>PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- More projects note -->
+        <div class="more-projects" data-aos="fade-up">
+          <div class="more-icon"><i class="bi bi-collection"></i></div>
+          <h3>And Many More Projects</h3>
+          <p>These are only a few of the projects I've built. I have delivered many other websites and web applications that aren't shown here. Get in touch and I'll be glad to share more of my work or discuss your own idea.</p>
+          <a href="{% url 'contact' %}" class="more-btn">Let's Talk <i class="bi bi-arrow-right ms-2"></i></a>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">David Thomas</strong> <span>All Rights Reserved<br></span></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>
+
+{% endblock %}
